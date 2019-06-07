@@ -136,8 +136,8 @@ class BitMEXWebsocket(EventEmitter, WebSocketApp):
         alog.debug("Websocket Opened. args: "+str(kwargs))
         self.emit('open')
 
-    def on_close(self):
-        alog.info('Websocket Closed')
+    def on_close(self, info):
+        alog.info('Websocket Closed: '+str(info))
 
     def on_error(self, error, exc):
         raise BitMEXWebsocketConnectionError(str(error)+str(exc))
